@@ -6,13 +6,8 @@ Route::get('/', function (){
     return view('welcome');
 });
 
-Route::get('about', function (){
-    return "About Page";
-});
+// Route::get('about', function (){
+//     return view('about');
+// });
 
-Route::get('contact', function (){
-    return "Contact Page";
-});
-
-//Route::redirect('about', 'contact', 301);
-Route::permanentRedirect('about', 'contact');
+Route::view('about', 'about', ['name' => 'Yasin Razmi']);
