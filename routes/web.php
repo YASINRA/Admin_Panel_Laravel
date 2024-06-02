@@ -16,3 +16,11 @@ Route::resource('articles', 'ArticlesController');
 // Route::put('/articles/{article}', [ArticlesController::class, 'update'])->name('articles.update');
 // Route::patch('/articles/{article}', [ArticlesController::class, 'update']);
 // Route::delete('/articles/{article}', [ArticlesController::class, 'destroy'])->name('articles.destroy');
+
+Route::get('about/{id}', function ($id) {
+    return "About Page";
+})->where('id', '[0-9]+');
+
+Route::get('student/{username}', function ($username) {
+    //return "About Page";
+})->where('username', '[a-zA-Z0-9]+');
