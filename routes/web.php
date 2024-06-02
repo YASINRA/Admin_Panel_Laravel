@@ -6,8 +6,13 @@ Route::get('/', function (){
     return view('welcome');
 });
 
-// Route::get('about', function (){
-//     return view('about');
-// });
+Route::resource('articles', 'ArticlesController');
 
-Route::view('about', 'about', ['name' => 'Yasin Razmi']);
+// Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
+// Route::get('/articles/create', [ArticlesController::class, 'create'])->name('articles.create');
+// Route::post('/articles/store', [ArticlesController::class, 'store'])->name('articles.store');
+// Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
+// Route::get('/articles/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
+// Route::put('/articles/{article}', [ArticlesController::class, 'update'])->name('articles.update');
+// Route::patch('/articles/{article}', [ArticlesController::class, 'update']);
+// Route::delete('/articles/{article}', [ArticlesController::class, 'destroy'])->name('articles.destroy');
