@@ -6,7 +6,7 @@ Route::get('/', function (){
     return view('welcome');
 });
 
-//Route::resource('articles', 'ArticlesController');
+// Route::resource('articles', 'ArticlesController');
 
 // Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
 // Route::get('/articles/create', [ArticlesController::class, 'create'])->name('articles.create');
@@ -17,13 +17,13 @@ Route::get('/', function (){
 // Route::patch('/articles/{article}', [ArticlesController::class, 'update']);
 // Route::delete('/articles/{article}', [ArticlesController::class, 'destroy'])->name('articles.destroy');
 
-// Route::get('about/{id}', function ($id) {
-//     return "About Page";
-// })->where('id', '[0-9]+');
+Route::get('about/{id}', function ($id) {
+    return "About Page";
+})->where('id', '[0-9]+');
 
-// Route::get('student/{username}', function ($username) {
-//     //return "About Page";
-// })->where('username', '[a-zA-Z0-9]+');
+Route::get('student/{username}', function ($username) {
+    //return "About Page";
+})->where('username', '[a-zA-Z0-9]+');
 
 
 Route::get('student/{id}', function ($id){
