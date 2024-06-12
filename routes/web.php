@@ -6,10 +6,11 @@ Route::get('/', function (){
     return view('welcome');
 });
 
-Route::get('admin/home', function (){
-    return view('admin.home');
-});
-
-Route::get('customer/home', function (){
-    return view('customer.home');
+Route::get('home', function (){
+    // return view('home', ['name' => 'yasin razmi', 'age' => 21]);
+    // return view('home')->with('name', 'yasin razmi')->with('age', 21);
+    // return view('home')->with(['name' => 'yasin razmi', 'age' => 21]);
+    $name = 'yasin razmi';
+    $age = 21;
+    return view('home', compact('name', 'age'));
 });
