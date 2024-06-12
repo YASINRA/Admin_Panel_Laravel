@@ -20,9 +20,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::share([
-            'country' => 'Iran',
-            'city' =>  'Isfahan',
-        ]);
+        // View::share([
+        //     'country' => 'Iran',
+        //     'city' =>  'Isfahan',
+        // ]);
+
+        View::composer(['home', 'contact'], function ($view) {
+            $view->with('country', 'Iran');
+            $view->with('city', 'Isfahan');
+        });
     }
 }
