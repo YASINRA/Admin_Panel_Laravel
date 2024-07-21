@@ -22,7 +22,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'index']);
+});
+
+Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::get('vendor/dashboard', [VendorController::class, 'index']);
 });
