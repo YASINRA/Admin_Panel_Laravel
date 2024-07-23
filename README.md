@@ -1,2 +1,2 @@
-# Non-Profit-Charity-Website
-A Complete Non-Profit Charity Website using Laravel
+# Admin-Panel-Laravel
+A Admin-Panel Website using Laravel
