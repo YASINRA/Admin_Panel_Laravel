@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     @include('admin.layouts.styles')
-
     @include('admin.layouts.scripts')
 
 </head>
@@ -20,11 +19,10 @@
 <div id="app">
     <div class="main-wrapper">
 
-        @include('admin.layouts.nav')
+    @include('admin.layouts.nav')
+    @include('admin.layouts.sidebar')
 
-        @include('admin.layouts.sidebar')
-
-        <div class="main-content">
+    <div class="main-content">
             <section class="section">
                 <div class="section-header justify-content-between">
                     <h1>@yield('page_heading')</h1>
@@ -39,7 +37,7 @@
     </div>
 </div>
 
-@include('admin.layouts.scripts_footer')
+    @include('admin.layouts.scripts_footer')
 
 </body>
 </html>
