@@ -1,20 +1,12 @@
-{{-- <h2>Admin Dashboard</h2>
-
-<form method="POST" action="{{ route('logout') }}">
-    @csrf
-    <a :href="{{ route('logout') }}"onclick="event.preventDefault(); this.closest('form').submit();">
-        Logout</a>
-</form> --}}
-
 @extends('admin.layouts.app')
 
 @section('page_heading', 'Dashboard')
 
 @section('page_link')
-    <a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Button</a>
+    {{-- <a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Button</a> --}}
 @endsection
 
-@section('page_content', 'Dashboard')
+@section('page_content')
 <div class="section-body">
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
@@ -63,6 +55,5 @@
             </div>
         </div>
     </div>
-
 </div>
 @endsection
