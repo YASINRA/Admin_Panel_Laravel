@@ -6,7 +6,7 @@
     <a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Button</a>
 @endsection
 
-@section('page_content', 'Dashboard')
+@section('page_content')
 <div class="section-body">
     <div class="row">
         <div class="col-12">
@@ -15,8 +15,11 @@
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="{{ asset('uploads/user.jpg') }}" alt="" class="profile-photo w_100_p">
-                                <input type="file" class="mt_10" name="photo">
+                                @if (Auth::user()->photo == NULL)
+                                <img alt="image" src="{{ asset('uploads/default.png') }}" class="profile-photo w_100_p">
+                                @else 
+                                    <img alt="image" src="{{ asset('uploads/.Auth::user()->photo') }}" class="profile-photo w_100_p">
+                                @endif
                             </div>
                             <div class="col-md-9">
                                 <div class="mb-4">
@@ -46,3 +49,4 @@
             </div>
         </div>
 </div>
+@endsection

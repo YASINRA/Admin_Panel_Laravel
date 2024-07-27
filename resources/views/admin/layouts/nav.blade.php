@@ -9,9 +9,16 @@
         <li class="nav-link">
             <a href="" target="_blank" class="btn btn-warning">Front End</a>
         </li>
+        <li class="nav-link">
+            logged in as: {{ Auth::user()->name }}
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img alt="image" src="{{ asset('uploads/user.jpg') }}" class="rounded-circle-custom">
+                @if (Auth::user()->photo == NULL)
+                    <img alt="image" src="{{ asset('uploads/default.png') }}" class="rounded-circle-custom">
+                @else 
+                    <img alt="image" src="{{ asset('uploads/.Auth::user()->photo') }}" class="rounded-circle-custom">
+                @endif
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="far fa-user"></i> Edit Profile</a></li>
