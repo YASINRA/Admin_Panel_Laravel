@@ -13,8 +13,6 @@
             <div class="card">
                 <div class="card-body">
 
-
-
                     <form action="{{ route('admin.profile_update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -22,8 +20,10 @@
                                 @if (Auth::user()->photo == NULL)
                                 <img alt="image" src="{{ asset('uploads/default.png') }}" class="profile-photo w_100_p">
                                 @else 
-                                    <img alt="image" src="{{ asset('uploads/.Auth::user()->photo') }}" class="profile-photo w_100_p">
+                                    <img alt="image" src="{{ asset('uploads/'.Auth::user()->photo) }}" class="profile-photo w_100_p">
                                 @endif
+
+                                <input type="file" class="mt-10" name="photo">
                             </div>
                             <div class="col-md-9">
                                 <div class="mb-4">

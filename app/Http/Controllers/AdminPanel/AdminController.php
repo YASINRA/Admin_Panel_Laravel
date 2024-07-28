@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Mockery\CountValidator\AtMost;
 
 class AdminController extends Controller
 {
@@ -40,9 +41,21 @@ class AdminController extends Controller
             ]);
             $user->password = bcrypt('password');
         }
-        
-        $user->save();
 
+        if($request->hasFile('photo')){
+            $request->validate([
+                'photo' => ['required', 'image', 'mimes:jpeg,png,gif'],
+            ]);
+              
+            if(Auth::user()->photo != '') {
+                unlink(public_path('uploads/'.Auth::user()->photo));
+            }
+            $final_name = time().'.'.$request->photo->extension();
+            $request->photo->move(public_path('uploads'), $final_name);
+            $user->photo = $final_name;
+        }  
+
+        $user->save();
         return redirect()->back()->with('success', 'Profile is updated successfully!');
     }
 }
