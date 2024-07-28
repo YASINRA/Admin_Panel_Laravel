@@ -12,7 +12,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="post">
+
+
+
+                    <form action="{{ route('admin.profile_update') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-md-3">
                                 @if (Auth::user()->photo == NULL)
@@ -24,19 +28,19 @@
                             <div class="col-md-9">
                                 <div class="mb-4">
                                     <label class="form-label">Name *</label>
-                                    <input type="text" class="form-control" name="name" value="John Doe">
+                                    <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Email *</label>
-                                    <input type="text" class="form-control" name="email" value="john@gmail.com">
+                                    <input type="text" class="form-control" name="email" value="{{ Auth::user()->email }}">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="new_password">
+                                    <input type="password" class="form-control" name="password">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label">Retype Password</label>
-                                    <input type="password" class="form-control" name="retype_password">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" name="password_confirmation">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label"></label>
