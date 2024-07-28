@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -31,6 +32,15 @@ class AdminController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+
+        if($request->password != '' || $request->password_confirmation != ''){
+            $request->validate([
+                'password' => ['required', 'min:8'],
+                'password_confirmation' => ['required', 'same:password'],
+            ]);
+            $user->password = bcrypt('password');
+        }
+        
         $user->save();
 
         return redirect()->back()->with('success', 'Profile is updated successfully!');
