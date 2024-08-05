@@ -30,5 +30,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin_logout');
     Route::get('/forget-password', [AdminController::class, 'forget_password'])->name('admin_forget_password');
     Route::post('/forget-password-submit', [AdminController::class, 'forget_password_submit'])->name('admin_Forget_Password_submit');
-    Route::get('/forget-password/{token}/{email}', [AdminController::class, 'reset_password'])->name('admin_reset_password');
+    Route::get('/reset-password/{token}/{email}', [AdminController::class, 'reset_password'])->name('admin_reset_password');
+    Route::post('/reset-password-submit', [AdminController::class, 'reset_password_submit'])->name('admin_reset_Password_submit');
 });
