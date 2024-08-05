@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Login</title>
+    <title>Admin Forget Password</title>
 </head>
 <body>
     
-    <h2>Login</h2>
+    <h2>Forget Password</h2>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <li> {{ $error }} </li>
@@ -20,13 +20,12 @@
     @if (Session::has('success'))
         <li> {{ Session::get('success') }} </li>
     @endif
-    <form action="{{ route('admin_login_submit') }}" method="post">
+    <form action="{{ route('admin_Forget_Password_submit') }}" method="post">
         @csrf
         <input type="text" name="email" placeholder="Email"><br>
-        <input type="password" name="password" placeholder="Password"><br>
-        <button type="submit">Login</button>
+        <button type="submit">Submit</button>
     </form>
-    <a href="{{ route('admin_forget_password') }}">Forget Password</a>
+    <a href="{{ route('admin_login') }}">Back to Login Page</a>
 
 </body>
 </html>
