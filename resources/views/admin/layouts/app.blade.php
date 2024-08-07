@@ -18,7 +18,7 @@
 <body>
     <div id="app">
         <div class="main-wrapper">
-            @if (!Request::is('admin/login'))
+            @if (!Request::is('admin/login') && !Request::is('admin/forget-password') && !Request::is('admin/reset-password/*/*'))
                 @include('admin.layouts.nav')
                 @include('admin.layouts.sidebar')
             @endif
