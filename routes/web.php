@@ -22,6 +22,8 @@ require __DIR__.'/auth.php';
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
+    Route::get('/edit-profile', [AdminController::class, 'edit_profile'])->name('admin_edit_profile');
+    Route::post('/edit-profile-submit', [AdminController::class, 'edit_profile_submit'])->name('admin_edit_profile_submit');
 });
 
 Route::prefix('admin')->group(function () {

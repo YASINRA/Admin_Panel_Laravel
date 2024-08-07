@@ -15,7 +15,7 @@
                 <img alt="image" src="{{ asset('uploads/user.jpg') }}" class="rounded-circle-custom">
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="profile.html"><i class="far fa-user"></i> Edit Profile</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin_edit_profile') }}"><i class="far fa-user"></i> Edit Profile</a></li>
                 <li><a class="dropdown-item" href="{{ route('admin_logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </li>
