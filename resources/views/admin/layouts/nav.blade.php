@@ -12,7 +12,11 @@
         <li class="text-white pt_5">Logged in as: {{ Auth::guard('admin')->user()->name }}</li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img alt="image" src="{{ asset('uploads/user.jpg') }}" class="rounded-circle-custom">
+                @if (Auth::guard('admin')->user()->photo != null)
+                    <img src="{{ asset('uploads/'.Auth::guard('admin')->user()->photo) }}" alt="" class="rounded-circle-custom">
+                @else
+                    <img src="{{ asset('uploads/default.png') }}" alt="" class="rounded-circle-custom">
+                @endif
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="{{ route('admin_edit_profile') }}"><i class="far fa-user"></i> Edit Profile</a></li>

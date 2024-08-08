@@ -22,6 +22,43 @@ class AdminController extends Controller
         return view('admin.edit_profile');
     }
 
+    public function edit_profile_submit(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+        $admin_data = Admin::find(Auth::guard('admin')->user()->id);
+
+        if ($request->photo != null) {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png',
+            ]);
+            // dd($request->photo->extension());
+            if (Auth::guard('admin')->user()->photo != null) {
+                unlink(public_path('uploads/' . Auth::guard('admin')->user()->photo));
+            }
+
+            $final_name = time() . '.' . $request->photo->extension();
+            $request->photo->move(public_path('uploads'), $final_name);
+            $admin_data->photo = $final_name;
+        }
+
+        if ($request->password != '' || $request->password_confirmation != '') {
+            $request->validate([
+                'password' => 'required',
+                'password_confirmation' => 'required|same:password',
+            ]);
+            $admin_data->password = Hash::make($request->password);
+        }
+
+        $admin_data->name = $request->name;
+        $admin_data->email = $request->email;
+        $admin_data->update();
+
+        return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
     public function login()
     {
         return view('admin.login');
